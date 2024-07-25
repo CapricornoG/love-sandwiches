@@ -16,13 +16,21 @@ def get_sales_data():
     """
     Get sales figures from the user
     """
-    print("Enter sales from last market.")
-    print("We need six number, int as the number of sandwiches we got!\n as in the example: 10,20,30,40,50,60\n")
-    
-    data_str = input("Now enter the data please: ")
+    while True:
+        print("Enter sales from last market.")
+        print("We need six number, int as the number of sandwiches we got!\n as in the example: 10,20,30,40,50,60\n")
+        
+        data_str = input("Now enter the data please: ")
 
-    sales_data = data_str.split(",")
-    validate_data(sales_data)
+        sales_data = data_str.split(",")
+
+        if validate_data(sales_data):
+            print("Data is valid")
+            break
+
+    return sales_data
+
+        
 
 def validate_data(values):
     """COnvert string in int.
@@ -40,7 +48,10 @@ def validate_data(values):
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
+    
+    return True
 
     
-get_sales_data()
+data = get_sales_data()
 
